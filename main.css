@@ -1,0 +1,24 @@
+html * {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+body {
+    text-align: center;
+    margin: 10px auto;
+}
+
+.ui {
+    border-radius: 20px;
+    text-align: center;
+    font-size: 2.2em;
+    margin: 10px;
+    padding: 7px;
+    background-color: rgb(120, 140, 120);
+    /*width: 50%;*/
+}
+
+#goButton {
+    width: 75px;
+    height: 75px;
+    border-radius: 100px;
+}
