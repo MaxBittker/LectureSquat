@@ -2,7 +2,9 @@ var request = require('browser-request')
 
 var timeSelect = document.getElementById("time");
 var btn = document.getElementById('goButton');
-var resultDiv = document.getElementById("results")
+var resultDiv = document.getElementById("results");
+
+
 
 var getClasses = function(time) {
     request('https://postgrest.herokuapp.com/sessions', function(er, res) {
@@ -24,3 +26,13 @@ btn.addEventListener('click', function() {
 
     getClasses(time);
 }, false);
+
+
+var d = new Date();
+var h = d.getHours();
+var m = d.getMinutes();
+
+if ((h < 8) || (h > 18)) {
+    h = 8;
+}
+timeSelect.value = h.toString()
