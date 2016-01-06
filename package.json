@@ -1,0 +1,19 @@
+{
+  "name": "lecturesquat",
+  "version": "0.0.0",
+  "description": "find nearby lectures to squat",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaxBittker/LectureSquat.git"
+  },
+  "author": "max bittker",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/MaxBittker/LectureSquat/issues"
+  },
+  "homepage": "https://github.com/MaxBittker/LectureSquat#readme"
+}
