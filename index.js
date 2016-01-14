@@ -96,11 +96,15 @@
 	function getDistance(l) {
 	    if (placeSelect.value === "Anywhere")
 	        return 0
+	    if (l.location === "TBA")
+	        return 0
+	    if (l.sections.type !== "LEC")
+	        return 0
 
 	    var hall = l.location.split(" ")[0]
 	    var a = buildingList[placeSelect.value]
 	    var b = buildingList[hall]
-	        // console.log(a, b)
+	    console.log(hall)
 
 	    return Math.sqrt(((a[0] - b[0]) * (a[0] - b[0])) + ((a[1] - b[1]) * (a[1] - b[1])))
 	}
