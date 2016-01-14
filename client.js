@@ -48,7 +48,7 @@ var buildingList = {
 var courseTemplate = _.template("<h4><%= sections.courses.subjects.title %> <%= sections.courses.number %> - <%= sections.courses.title %> | <%= location %></h4><p class='desc'><%= sections.courses.description %></p>");
 
 function getDistance(l) {
-    if (placeSelect.value === "ANYWHERE")
+    if (placeSelect.value === "Anywhere")
         return 0
 
     var hall = l.location.split(" ")[0]
