@@ -96,15 +96,10 @@
 	function getDistance(l) {
 	    if (placeSelect.value === "Anywhere")
 	        return 0
-	    if (l.location === "TBA")
-	        return 0
-	    if (l.sections.type !== "LEC")
-	        return 0
-
 	    var hall = l.location.split(" ")[0]
 	    var a = buildingList[placeSelect.value]
 	    var b = buildingList[hall]
-	    console.log(hall)
+	        // console.log(hall)
 
 	    return Math.sqrt(((a[0] - b[0]) * (a[0] - b[0])) + ((a[1] - b[1]) * (a[1] - b[1])))
 	}
@@ -118,15 +113,16 @@
 
 	            var list = JSON.parse(res.body)
 	                // console.log(list)
+	            list = _.filter(list, function(item) {
+	                if (item.location === "TBA")
+	                    return false
+	                if (item.sections.type !== "LEC")
+	                    return false
+	                else return true
+	            })
 	            list = _.sortBy(list, getDistance)
 
 	            list.forEach(function(result) {
-	                if (result.location === "TBA")
-	                    return
-	                if (result.sections.type !== "LEC")
-	                    return
-	                    // console.log(result.location.split(" ")[0])
-
 	                var node = document.createElement("li"); // Create a <li> node
 	                node.innerHTML = courseTemplate(result); // Create a text node
 
