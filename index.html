@@ -1,23 +1,52 @@
 <!DOCTYPE html>
 <html>
+<link rel rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
 <link rel="stylesheet" href="main.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<title>LecturesQuat</title>
 
 <body>
-    <p>Find me a lecture near
+    <p class="prompt">Find me a lecture near
         <select id="loc" class="ui">
             <option value="Anywhere">Anywhere </option>
-            <option value="">ILC </option>
-            <option value="">Chernoff </option>
-            <option value="">Goodes </option>
-            <option value="">BioSci </option>
-            <option value="">Stauffer </option>
-            <option value="">the ARC </option>
-            <option value="Dupuis">Dupuis</option>
-            <option value="Ontario">Ontario</option>
-            <option value="Stirling">Stirling</option>
+            <option value="ACTON"> ACTON </option>
+            <option value="BEAMISH-MUNRO"> BEAMISH-MUNRO </option>
+            <option value="BIOSCI"> BIOSCI </option>
+            <option value="BOTTER"> BOTTER </option>
+            <option value="BRUCE"> BRUCE </option>
+            <option value="CATARAQUI"> CATARAQUI </option>
+            <option value="CHERNOFF"> CHERNOFF </option>
+            <option value="DOUGLAS"> DOUGLAS </option>
+            <option value="DUNCAN"> DUNCAN </option>
+            <option value="DUNNING"> DUNNING </option>
+            <option value="DUPUIS"> DUPUIS </option>
+            <option value="ELLIS"> ELLIS </option>
+            <option value="ETHERINGTON"> ETHERINGTON </option>
+            <option value="GOODES"> GOODES </option>
+            <option value="GOODWIN"> GOODWIN </option>
+            <option value="HARRISON-LECAINE"> HARRISON-LECAINE </option>
+            <option value="HUMPHREY"> HUMPHREY </option>
+            <option value="IBCPA"> IBCPA </option>
+            <option value="JACKSN"> JACKSN </option>
+            <option value="JACKSON"> JACKSON </option>
+            <option value="JEFFERY"> JEFFERY </option>
+            <option value="JOHN"> JOHN </option>
+            <option value="KINES"> KINES </option>
+            <option value="KINGSTON"> KINGSTON </option>
+            <option value="MACDONALD"> MACDONALD </option>
+            <option value="MACINTOSH-CORRY"> MACINTOSH-CORRY </option>
+            <option value="MCLAUGHLIN"> MCLAUGHLIN </option>
+            <option value="MEDS"> MEDS </option>
+            <option value="MILLER"> MILLER </option>
+            <option value="NICOL"> NICOL </option>
+            <option value="ONTARIO"> ONTARIO </option>
+            <option value="RICHARDSON"> RICHARDSON </option>
+            <option value="STAUFFER"> STAUFFER </option>
+            <option value="STIRLING"> STIRLING </option>
+            <option value="THEOLOGICAL"> THEOLOGICAL </option>
+            <option value="WALTER"> WALTER LIGHT </option>
         </select>
-        starting at
+        <br> starting at
         <select id="time" class="ui">
             <!-- <option value="Right now">now</option> -->
             <option value="8">8:30</option>
@@ -34,19 +63,12 @@
         </select>
         <button id="goButton" class="ui" type="button"><i class="fa fa-hand-o-right"></i></button>
     </p>
-    <br>
-    <div id='results'>
-        Cool Class | KIN 101 | 9:30-10:30
-        <br> Cool Class | KIN 101 | 9:30-10:30
-        <br> Cool Class | KIN 101 | 9:30-10:30
-        <br> Cool Class | KIN 101 | 9:30-10:30
-        <br> Cool Class | KIN 101 | 9:30-10:30
-        <br> Cool Class | KIN 101 | 9:30-10:30
-        <br>
-    </div>
+    <ul id='results'>
+    </ul>
 </body>
 <footer>
     Please be respectful of host classrooms
+    <br> Thanks to <a href='http://new.qcumber.ca'>qcumber.ca<a> for course details 
 </footer>
 <script src="index.js"></script>
 
