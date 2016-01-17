@@ -68,10 +68,9 @@ li .desc {
   display: none;
 }
 
-li:hover .desc {
+li:hover,li:focus,li:active .desc {
   display: block;
 }
-
 
 .desc {
 	margin-left: .3em;
