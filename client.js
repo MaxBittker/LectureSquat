@@ -47,9 +47,24 @@ var buildingList = {
 }
 
 function timePrinter(str) {
-	var cmp = str.split(":")
-    return cmp[0] % 12 + ':' + cmp[1]
+    var cmp = str.split(":")
+    var hour = cmp[0]
 
+    if (cmp[0] > 12)
+        hour = hour % 12
+
+    return hour + ':' + cmp[1]
+}
+
+function timeSOLUSFormater(value) {
+    var str = ((value / 2) | 0).toString()
+
+    if (value % 2)
+        end = ':30:00'
+    else
+        end = ':00:00'
+
+    return str + end
 }
 var courseTemplate = _.template("<div class='card'><h4 class='cardLeft'><%= sections.courses.subjects.title %> <%= sections.courses.number %> - <%= sections.courses.title %> </h4> <h4 class='cardRight'> <%= location %> </h4></div><br> <p class='desc'> <%= sections.courses.description %>  <b><%= start_time %> - <%= end_time %></b> </p> ");
 
@@ -65,22 +80,29 @@ function getDistance(l) {
     return Math.sqrt(((a[0] - b[0]) * (a[0] - b[0])) + ((a[1] - b[1]) * (a[1] - b[1])))
 }
 var getClasses = function(time) {
-    var query = 'section_classes?start_time=eq.' + timeSelect.value +
-        ':30:00' + '&day_of_week=eq.' + dayOfWeekLookup[d] + '&term_start=eq.2016-01-04&select= location,start_time,end_time,sections{id,type,courses{id,number,title,description,subjects{*}}}'
-        // console.log(query)
+    var query = 'section_classes?start_time=eq.' + timeSOLUSFormater(timeSelect.value) + '&day_of_week=eq.' + dayOfWeekLookup[d] + '&term_start=eq.2016-01-04&select= location,start_time,end_time,sections{id,type,courses{id,number,title,description,subjects{*}}}'
     request('http://159.203.112.6:3000/' + query, function(er, res) {
         if (!er) {
             resultDiv.innerHTML = '';
 
             var list = JSON.parse(res.body)
-                // console.log(list)
             list = _.filter(list, function(item) {
+                // if (item===null)
+                // return false
                 if (item.location === "TBA")
                     return false
                 if (item.sections.type !== "LEC")
                     return false
                 else return true
             })
+
+            if (list.length === 0) {
+                resultDiv.innerHTML = "<li style='text-align:center;'>no lectures found for this time. trying another start time.</li>"
+                timeSelect.value++
+                    if (timeSelect.value < 38)
+                        update()
+                return
+            }
 
             list = _.sortBy(list, getDistance)
 
@@ -103,10 +125,9 @@ var getClasses = function(time) {
 
 function update() {
     var time = timeSelect.options[timeSelect.selectedIndex].value;
-
     getClasses(time);
 }
-// btn.addEventListener('click', update, false);
+
 placeSelect.addEventListener('change', update, false)
 timeSelect.addEventListener('change', update, false)
 
@@ -117,10 +138,12 @@ var d = date.getDay()
 if ((h < 8) || (h > 18)) {
     h = 8;
 }
-if (m > 47) {
+h = h * 2
+if (m > 10) {
+    h++
+}
+if (m > 40) {
     h++
 }
 timeSelect.value = h.toString()
-
 update()
-

@@ -4,13 +4,15 @@ html * {
 
 .prompt {
     font-size: 2em;
+    margin: 2px;
 }
 
 body {
     text-align: center;
-    padding: 20px;
+    padding: 2px;
     margin: 10px auto;
     background-color: #F3ECE2;
+    max-width: 1100px;
 }
 
 .ui {
@@ -27,13 +29,6 @@ body {
 #results{
 	padding: 10px
 }
-/*#goButton {
-    width: 60px;
-    height: 60px;
-    border-radius: 100px;
-    color: #F3ECE2;
-    font-size: 1.2em;
-}*/
 
 footer {
     width: 100%;
@@ -70,12 +65,9 @@ li {
 }
 
 li .desc {
-  /*display: none;*/
+  display: none;
 }
 
-/*li:hover .desc {*/
-  /*display: block;*/
-/*}*/
 li:hover .desc {
   display: block;
 }
