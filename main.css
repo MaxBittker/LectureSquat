@@ -70,7 +70,7 @@ li {
 }
 
 li .desc {
-  display: none;
+  /*display: none;*/
 }
 
 /*li:hover .desc {*/
