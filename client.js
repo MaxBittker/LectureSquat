@@ -5,7 +5,8 @@ var timeSelect = document.getElementById("time");
 var btn = document.getElementById('goButton');
 var resultDiv = document.getElementById("results");
 
-var dayOfWeekLookup = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "SATURDAY"]
+var dayOfWeekLookup = ["MONDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "MONDAY"]
+
 var buildingList = {
     "ACTON": [44.22387, -76.49149],
     "BEAMISH-MUNRO": [44.22820, -76.49248],
@@ -45,7 +46,13 @@ var buildingList = {
     "WALTER": [44.22796, -76.49167]
 }
 
-var courseTemplate = _.template("<h4><%= sections.courses.subjects.title %> <%= sections.courses.number %> - <%= sections.courses.title %> | <%= location %></h4><p class='desc'><%= sections.courses.description %></p>");
+function timePrinter(str) {
+	var cmp = str.split(":")
+    return cmp[0] % 12 + ':' + cmp[1]
+
+}
+var courseTemplate = _.template("<div class='card'><h4 class='cardLeft'><%= sections.courses.subjects.title %> <%= sections.courses.number %> - <%= sections.courses.title %> </h4> <h4 class='cardRight'> <%= location %> </h4></div><br> <p class='desc'> <%= sections.courses.description %>  <b><%= start_time %> - <%= end_time %></b> </p> ");
+
 
 function getDistance(l) {
     if (placeSelect.value === "Anywhere")
@@ -59,7 +66,7 @@ function getDistance(l) {
 }
 var getClasses = function(time) {
     var query = 'section_classes?start_time=eq.' + timeSelect.value +
-        ':30:00' + '&day_of_week=eq.' + dayOfWeekLookup[d] + '&term_start=eq.2016-01-04&select= location,sections{id,type,courses{id,number,title,description,subjects{*}}}'
+        ':30:00' + '&day_of_week=eq.' + dayOfWeekLookup[d] + '&term_start=eq.2016-01-04&select= location,start_time,end_time,sections{id,type,courses{id,number,title,description,subjects{*}}}'
         // console.log(query)
     request('http://159.203.112.6:3000/' + query, function(er, res) {
         if (!er) {
@@ -74,10 +81,14 @@ var getClasses = function(time) {
                     return false
                 else return true
             })
+
             list = _.sortBy(list, getDistance)
 
             list.forEach(function(result) {
                 var node = document.createElement("li"); // Create a <li> node
+                result.start_time = timePrinter(result.start_time)
+                result.end_time = timePrinter(result.end_time)
+
                 node.innerHTML = courseTemplate(result); // Create a text node
 
                 resultDiv.appendChild(node); // Append <li> to <ul> with
@@ -90,11 +101,14 @@ var getClasses = function(time) {
     })
 }
 
-btn.addEventListener('click', function() {
+function update() {
     var time = timeSelect.options[timeSelect.selectedIndex].value;
 
     getClasses(time);
-}, false);
+}
+// btn.addEventListener('click', update, false);
+placeSelect.addEventListener('change', update, false)
+timeSelect.addEventListener('change', update, false)
 
 var date = new Date();
 var h = date.getHours();
@@ -107,3 +121,6 @@ if (m > 47) {
     h++
 }
 timeSelect.value = h.toString()
+
+update()
+

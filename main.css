@@ -16,26 +16,28 @@ body {
 .ui {
     border-radius: 200px;
     text-align: center;
-    font-size: 1.1em;
-    height: 60px;
-    padding: 0px 10px;
-    background-color: rgb(120, 150, 130);
+    font-size: 1em;
+    /*height: 60px;*/
+    /*padding: 0px 10px;*/
+    /*background-color: rgb(120, 150, 130);*/
+    background-color: rgba(120, 150, 130, 0.7);
+
 }
 
-#goButton {
-    width: 80px;
+#results{
+	padding: 10px
+}
+/*#goButton {
+    width: 60px;
     height: 60px;
     border-radius: 100px;
     color: #F3ECE2;
     font-size: 1.2em;
-}
+}*/
 
 footer {
-    /*position: absolute;*/
-    /*bottom: 0;*/
-    width: 90%;
+    width: 100%;
     text-align: center;
-    /*height: 60px;*/
     overflow: hidden;
 }
 
@@ -51,7 +53,36 @@ li {
     margin: 2px 2px;
 }
 
+.cardLeft {
+	float: left;
+	margin: 0px;
+
+}
+.cardRight {
+	float: right;
+	margin: 0px;
+
+}
+.card{
+	clear: both;
+	height: 0px;
+	margin: 0px;
+}
+
+li .desc {
+  display: none;
+}
+
+/*li:hover .desc {*/
+  /*display: block;*/
+/*}*/
+li:hover .desc {
+  display: block;
+}
+
+
 .desc {
+	margin-left: .3em;
     /*display: none;*/
 }
 
@@ -80,7 +111,7 @@ a:active {
 }
 
 
-/*
+
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -92,4 +123,4 @@ select::-ms-expand {
 }
 
 
-*/
+
