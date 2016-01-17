@@ -58,9 +58,11 @@ li {
     }
     .card {
         clear: both;
-        /*height: 0px;*/
-        margin: 0px;
     }
+}
+
+.card {
+    margin: 0px;
 }
 
 li .desc {
