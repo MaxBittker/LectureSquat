@@ -23,11 +23,10 @@ body {
     /*padding: 0px 10px;*/
     /*background-color: rgb(120, 150, 130);*/
     background-color: rgba(120, 150, 130, 0.7);
-
 }
 
-#results{
-	padding: 10px
+#results {
+    padding: 10px
 }
 
 footer {
@@ -48,32 +47,40 @@ li {
     margin: 2px 2px;
 }
 
-.cardLeft {
-	float: left;
-	margin: 0px;
-
-}
-.cardRight {
-	float: right;
-	margin: 0px;
-
-}
-.card{
-	clear: both;
-	height: 0px;
-	margin: 0px;
+@media screen and (min-width: 600px) {
+    .cardLeft {
+        float: left;
+        margin: 0px;
+    }
+    .cardRight {
+        float: right;
+        margin: 0px;
+    }
+    .card {
+        clear: both;
+        /*height: 0px;*/
+        margin: 0px;
+    }
 }
 
 li .desc {
-  display: none;
+    display: none;
 }
 
-li:hover,li:focus,li:active .desc {
-  display: block;
+li:hover .desc {
+    display: block;
+}
+
+li:focus .desc {
+    display: block;
+}
+
+li:active .desc {
+    display: block;
 }
 
 .desc {
-	margin-left: .3em;
+    margin-left: .3em;
     /*display: none;*/
 }
 
@@ -101,8 +108,6 @@ a:active {
     text-decoration: underline
 }
 
-
-
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -112,6 +117,3 @@ select {
 select::-ms-expand {
     display: none;
 }
-
-
-
