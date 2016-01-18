@@ -17,6 +17,7 @@ var buildingList = {
     "CHERNOFF": [44.22444, -76.49868],
     "DOUGLAS": [44.22735, -76.49506],
     "DUNCAN": [44.22416, -76.51439],
+    "DUNMCAN": [44.22416, -76.51439],
     "DUNNING": [44.22744, -76.49602],
     "DUPUIS": [44.22866, -76.49269],
     "ELLIS": [44.22637, -76.49616],
@@ -73,8 +74,12 @@ function getDistance(l) {
     if (placeSelect.value === "Anywhere")
         return 0
     var hall = l.location.split(" ")[0]
+
     var a = buildingList[placeSelect.value]
     var b = buildingList[hall]
+   
+    if (b === undefined)
+        b = [44.22637, -76.49616]
         // console.log(hall)
 
     return Math.sqrt(((a[0] - b[0]) * (a[0] - b[0])) + ((a[1] - b[1]) * (a[1] - b[1])))
