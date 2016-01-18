@@ -77,7 +77,7 @@ function getDistance(l) {
 
     var a = buildingList[placeSelect.value]
     var b = buildingList[hall]
-   
+
     if (b === undefined)
         b = [44.22637, -76.49616]
         // console.log(hall)
@@ -86,7 +86,10 @@ function getDistance(l) {
 }
 var getClasses = function(time) {
     var query = 'section_classes?start_time=eq.' + timeSOLUSFormater(timeSelect.value) + '&day_of_week=eq.' + dayOfWeekLookup[d] + '&term_start=eq.2016-01-04&select= location,start_time,end_time,sections{id,type,courses{id,number,title,description,subjects{*}}}'
-    request('http://159.203.112.6:3000/' + query, function(er, res) {
+    request.get({
+        url: 'http://159.203.112.6:3000/' + query,
+        withCredentials: true
+    }, function(er, res) {
         if (!er) {
             resultDiv.innerHTML = '';
 
