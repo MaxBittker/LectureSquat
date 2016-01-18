@@ -193,10 +193,10 @@
 	    h = 8;
 	}
 	h = h * 2
-	if (m > 10) {
+	if (m > 7) {
 	    h++
 	}
-	if (m > 40) {
+	if (m > 37) {
 	    h++
 	}
 	timeSelect.value = h.toString()
