@@ -5,7 +5,7 @@ var timeSelect = document.getElementById("time");
 var btn = document.getElementById('goButton');
 var resultDiv = document.getElementById("results");
 
-var dayOfWeekLookup = ["MONDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "MONDAY"]
+var dayOfWeekLookup = ["MONDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY","FRIDAY", "MONDAY"]
 
 var buildingList = {
     "ACTON": [44.22387, -76.49149],

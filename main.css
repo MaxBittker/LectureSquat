@@ -1,4 +1,5 @@
 html * {
+    /*font-family: "Helvetica", sans-serif;*/
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 
@@ -27,6 +28,10 @@ body {
 
 #results {
     padding: 10px
+}
+
+#results * {
+    font-family: "Helvetica", sans-serif;
 }
 
 footer {
@@ -61,7 +66,7 @@ li {
     }
 }
 
-.card *{
+.card * {
     margin: 0px;
 }
 
