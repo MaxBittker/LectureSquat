@@ -115,7 +115,8 @@ var getClasses = function(time, clear) {
                 var node = document.createElement("li"); // Create a <li> node
                 result.start_time = timePrinter(result.start_time)
                 result.end_time = timePrinter(result.end_time)
-
+                if (result.sections.courses.subjects.title === "ComputingInformation Science")
+                    result.sections.courses.subjects.title = "Computing"
                 node.innerHTML = courseTemplate(result); // Create a text node
 
                 node.addEventListener('mouseup', classToggle, false);
