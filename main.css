@@ -1,5 +1,4 @@
 html * {
-    /*font-family: "Helvetica", sans-serif;*/
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 
@@ -26,12 +25,8 @@ body {
     background-color: rgba(120, 150, 130, 0.7);
 }
 
-#results {
-    padding: 10px
-}
-
 #results * {
-    font-family: "Helvetica", sans-serif;
+    padding: 10px font-family: "Helvetica", sans-serif;
 }
 
 footer {
@@ -48,7 +43,7 @@ ul {
 li {
     background-color: rgba(120, 150, 130, 0.5);
     border-radius: 6px;
-    padding: 1px 5px;
+    padding: 2px 5px;
     margin: 2px 2px;
 }
 
@@ -70,13 +65,9 @@ li {
     margin: 0px;
 }
 
-li .desc {
-    display: none;
-}
-
 .desc {
+    display: none;
     margin-left: .3em;
-    /*display: none;*/
 }
 
 .open .desc {

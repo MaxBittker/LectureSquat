@@ -5,6 +5,8 @@ var timeSelect = document.getElementById("time");
 var btn = document.getElementById('goButton');
 var resultDiv = document.getElementById("results");
 
+var postgrest = 'http://159.203.112.6:3000'
+
 var dayOfWeekLookup = ["MONDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "MONDAY"]
 
 var buildingList = {
@@ -83,12 +85,10 @@ function getDistance(l) {
     return Math.sqrt(((a[0] - b[0]) * (a[0] - b[0])) + ((a[1] - b[1]) * (a[1] - b[1])))
 }
 var getClasses = function(time, clear) {
-    var query = 'section_classes?start_time=eq.' + timeSOLUSFormater(timeSelect.value) + '&day_of_week=eq.' + dayOfWeekLookup[d] + '&term_start=eq.2016-01-04&select= location,start_time,end_time,sections{id,type,courses{id,number,title,description,subjects{*}}}'
-    request.get({
-        url: 'http://159.203.112.6:3000/' + query,
-        withCredentials: true
-    }, function(er, res) {
+    var query = postgrest + '/section_classes?start_time=eq.' + timeSOLUSFormater(timeSelect.value) + '&day_of_week=eq.' + dayOfWeekLookup[d] + '&term_start=eq.2016-01-04&select= location,start_time,end_time,sections{id,type,courses{id,number,title,description,subjects{*}}}'
+    request.get(query, function(er, res) {
         if (!er) {
+
             if (clear !== false)
                 resultDiv.innerHTML = '';
 
@@ -101,7 +101,6 @@ var getClasses = function(time, clear) {
             })
 
             if (list.length === 0) {
-                console.log(timeSelect.toString())
                 resultDiv.innerHTML = "<li style='text-align:center;'>  No lectures found for " + timePrinter(timeSOLUSFormater(timeSelect.value)) + ", trying next time slot &#8227;</li>"
                 timeSelect.value++
                     if (timeSelect.value < 38)
@@ -113,14 +112,18 @@ var getClasses = function(time, clear) {
 
             list.forEach(function(result) {
                 var node = document.createElement("li"); // Create a <li> node
+
                 result.start_time = timePrinter(result.start_time)
                 result.end_time = timePrinter(result.end_time)
+
                 if (result.sections.courses.subjects.title === "ComputingInformation Science")
                     result.sections.courses.subjects.title = "Computing"
+
+                result.sections.courses.description = result.sections.courses.description.replace(/LEARNING HOURS.*/i, '')
+
                 node.innerHTML = courseTemplate(result); // Create a text node
 
-                node.addEventListener('mouseup', classToggle, false);
-                node.addEventListener('touchend', classToggle, false);
+                node.addEventListener('click', classToggle, false);
 
                 resultDiv.appendChild(node); // Append <li> to <ul> with
             })
@@ -134,7 +137,6 @@ var getClasses = function(time, clear) {
 
 function classToggle() {
     this.classList.toggle('open');
-    event.preventDefault();
     return false
 }
 
