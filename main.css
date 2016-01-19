@@ -25,8 +25,12 @@ body {
     background-color: rgba(120, 150, 130, 0.7);
 }
 
+#results {
+    padding-left: 1px;
+}
+
 #results * {
-    padding: 10px font-family: "Helvetica", sans-serif;
+    font-family: "Helvetica", sans-serif;
 }
 
 footer {
