@@ -74,21 +74,13 @@ li .desc {
     display: none;
 }
 
-li:hover .desc {
-    display: block;
-}
-
-li:focus .desc {
-    display: block;
-}
-
-li:active .desc {
-    display: block;
-}
-
 .desc {
     margin-left: .3em;
     /*display: none;*/
+}
+
+.open .desc {
+    display: block
 }
 
 a:link {
