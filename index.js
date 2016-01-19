@@ -179,7 +179,8 @@
 
 	function classToggle() {
 	    this.classList.toggle('open');
-	    console.log('clicked')
+	    event.preventDefault();
+	    return false
 	}
 
 	function update(clear) {
